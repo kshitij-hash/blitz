@@ -78,9 +78,9 @@ export function ShareDrawer({
     }
   }, [isOpen, contest?.contestId, cardGenerated, generateBattleCard]);
 
-  const shareUrl = `${
-    process.env.NEXT_PUBLIC_APP_URL || "https://blitzdotfun-three.vercel.app"
-  }${battleCardUrl}`;
+  // Create a shareable page URL instead of direct API endpoint
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://blitzdotfun-three.vercel.app";
+  const shareUrl = `${baseUrl}/contest/${contest?.contestId}`;
 
   const copyToClipboard = async () => {
     try {
@@ -94,6 +94,7 @@ export function ShareDrawer({
   const shareOnX = () => {
     const text = encodeURIComponent("Check out this epic battle on Blitz! ⚡");
     const url = encodeURIComponent(shareUrl);
+    // For Twitter, we can also include the image directly
     window.open(
       `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
       "_blank"
@@ -101,9 +102,9 @@ export function ShareDrawer({
   };
 
   const shareOnTelegram = () => {
-    const text = encodeURIComponent("Check out this epic battle on Blitz! ⚡");
     const url = encodeURIComponent(shareUrl);
-    window.open(`https://t.me/share/url?url=${url}&text=${text}`, "_blank");
+    // Use only URL parameter - Telegram will show preview without including URL in message text
+    window.open(`https://t.me/share/url?url=${url}`, "_blank");
   };
 
   const shareOnFarcaster = () => {
