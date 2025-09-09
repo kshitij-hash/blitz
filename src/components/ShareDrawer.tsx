@@ -139,20 +139,6 @@ export function ShareDrawer({
         </DialogHeader>
 
         <div className="pt-6">
-          {/* Contest Info */}
-          {contest && (
-            <div className="mb-6 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
-              <h3 className="text-white font-semibold mb-2">{contest.name}</h3>
-              <div className="text-sm text-gray-300 space-y-1">
-                <p>🔥 {contest.participants.length} warriors ready to battle</p>
-                <p>⚡ Status: <span className="text-green-400 capitalize">{contest.status}</span></p>
-                {contest.battleStartTime && (
-                  <p>🕐 Battle starts: {new Date(contest.battleStartTime).toLocaleString()}</p>
-                )}
-              </div>
-            </div>
-          )}
-          
           {/* Battle Card Preview */}
           <div className="mx-auto max-w-xs mb-8">
             {isGenerating ? (
