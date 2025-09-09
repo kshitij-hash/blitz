@@ -37,9 +37,9 @@ export function CreatorPostCard({ creator, postData }: CreatorPostCardProps) {
   const handleBuyOnZora = () => {
     if (creator?.handle) {
       window.open(
-        `https://zora.co/coin/base:${postData.address}`,
+        `https://zora.co/coin/base:${postData.address}?referrer=0x1aa6ad033c08da52893a3114501de1d9fa8b814a`,
         "_blank",
-        "noopener,noreferrer"
+        "noopener"
       );
     }
   };
