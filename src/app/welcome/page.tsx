@@ -89,8 +89,6 @@ function Welcome() {
     );
   }
 
-  // Routing is now handled by RoutingWrapper, no manual redirects needed
-
   return (
     <div className="min-h-screen size-full flex flex-col">
       <Header />
@@ -98,22 +96,10 @@ function Welcome() {
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-xl text-center space-y-6">
           <div className="space-y-2">
-            <h2
-              className="font-dela-gothic-one text-4xl font-bold"
-              style={{
-                color: "#F1F1F1",
-                WebkitTextStroke: "1px #1C7807",
-                letterSpacing: "0.1em",
-              }}
-            >
+            <h2 className="font-schibsted-grotesk text-4xl font-bold text-[#F1F1F1] tracking-widest">
               WELCOME TO BLITZ!
             </h2>
-            <p
-              className="font-schibsted-grotesk font-medium text-lg"
-              style={{
-                color: "#124D04",
-              }}
-            >
+            <p className="font-schibsted-grotesk font-medium text-lg text-[#124D04]">
               Your contest with{" "}
               {opponent ? (
                 <a
@@ -122,8 +108,7 @@ function Welcome() {
                   }`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:opacity-80 transition-opacity"
-                  style={{ color: "#124D04" }}
+                  className="underline hover:opacity-80 transition-opacity text-[#124D04]"
                 >
                   {opponent.handle || opponent.zoraProfile}
                 </a>
@@ -161,8 +146,7 @@ function Welcome() {
                         }`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline hover:opacity-80 transition-opacity"
-                        style={{ color: "#1C7807" }}
+                        className="underline hover:opacity-80 transition-opacity text-[#1C7807]"
                       >
                         {currentParticipant.handle?.toUpperCase() ||
                           currentParticipant.zoraProfile?.toUpperCase()}
@@ -184,12 +168,7 @@ function Welcome() {
                       onClick={handleCopyContract}
                       title={copyTooltip}
                     >
-                      <span
-                        className="font-schibsted-grotesk font-bold underline hover:opacity-80 transition-opacity"
-                        style={{
-                          color: "#1C7807",
-                        }}
-                      >
+                      <span className="font-schibsted-grotesk font-bold underline hover:opacity-80 transition-opacity text-[#1C7807]">
                         Blitz.sol
                       </span>
                       {showCheckmark ? (
@@ -212,9 +191,8 @@ function Welcome() {
           </div>
 
           <button
-            className="font-schibsted-grotesk w-full px-6 py-3 text-base font-semibold rounded-full shadow-lg transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
+            className="font-schibsted-grotesk w-full px-6 py-3 text-base font-semibold rounded-full shadow-lg transition-all duration-200 hover:shadow-xl active:scale-[0.98] text-[#124D04]"
             style={{
-              color: "#124D04",
               background: "linear-gradient(to right, #A6EC9C 0%, #B8EF92 100%)",
             }}
             onClick={handleDepositClick}
@@ -231,14 +209,7 @@ function Welcome() {
       </div>
 
       <div className="pb-8 text-center">
-        <h3
-          className="font-dela-gothic-one text-2xl font-bold opacity-60"
-          style={{
-            color: "#F1F1F1",
-            WebkitTextStroke: "1px #1C7807",
-            letterSpacing: "0.1em",
-          }}
-        >
+        <h3 className="font-dela-gothic-one text-2xl font-bold opacity-60 text-[#F1F1F1] tracking-widest" style={{ WebkitTextStroke: "1px #1C7807" }}>
           THE ARENA FOR CREATOR COINS.
         </h3>
       </div>
