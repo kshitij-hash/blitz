@@ -220,6 +220,22 @@ model Battle {
   @@map("battles")
 }
 
+// Battle cards for sharing
+model BattleCard {
+  id        String   @id @default(cuid())
+  cardNumber Int     @unique // Auto-incrementing card number
+  battleId  String   // Reference to the battle
+  createdBy String?  // User ID who generated the card
+  
+  // Battle data snapshot (stored as JSON for immutability)
+  battleData Json    // Contains participant data, battle info, etc.
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("battle_cards")
+}
+
 // Enums
 enum ContestStatus {
   CREATED

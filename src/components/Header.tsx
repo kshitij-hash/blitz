@@ -9,11 +9,13 @@ import infoIcon from "../assets/info.svg"
 import { InfoDrawer } from "./InfoDrawer"
 import { ShareDrawer } from "./ShareDrawer"
 import { Button } from "./ui/button"
+import { useContest } from "../hooks/useContest"
 
 export function Header() {
     const { ready, authenticated, user, logout } = usePrivy()
     const [isInfoDrawerOpen, setIsInfoDrawerOpen] = useState(false)
     const [isShareDrawerOpen, setIsShareDrawerOpen] = useState(false)
+    const { contest } = useContest()
 
     return (
         <>
@@ -65,7 +67,12 @@ export function Header() {
 
             <InfoDrawer isOpen={isInfoDrawerOpen} onClose={() => setIsInfoDrawerOpen(false)} />
 
-            <ShareDrawer isOpen={isShareDrawerOpen} onClose={() => setIsShareDrawerOpen(false)} />
+            <ShareDrawer 
+                isOpen={isShareDrawerOpen} 
+                onClose={() => setIsShareDrawerOpen(false)}
+                contest={contest}
+                userId={user?.id}
+            />
         </>
     )
 }
