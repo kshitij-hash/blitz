@@ -1,6 +1,6 @@
-import { Link } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   params: Promise<{ contestId: string }>;
@@ -57,12 +57,19 @@ export default async function ContestSharePage({ params }: Props) {
         </div>
 
         <div className="rounded-[32px] overflow-hidden border border-gray-700 mb-8">
-          <Image src={imageUrl} alt="Battle Card" width={300} height={400} />
+          <Image 
+            src={imageUrl} 
+            alt="Battle Card" 
+            width={300} 
+            height={400}
+            className="w-full h-auto"
+            unoptimized
+          />
         </div>
 
         <div className="text-center">
           <Link
-            href="/"
+            href="/pre-battle"
             className="inline-block bg-[#67CE67] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#5bb85b] transition-colors"
           >
             Join the Battle

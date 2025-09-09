@@ -92,9 +92,11 @@ export function ShareDrawer({
   };
 
   const shareOnX = () => {
-    const text = encodeURIComponent("Check out this epic battle on Blitz! ⚡");
+    const battleText = contest ? 
+      `🔥 Epic battle happening on Blitz! ${contest.participants.length} warriors competing in "${contest.name}" ⚡\n\nJoin the action and prove your skills!` :
+      "Check out this epic battle on Blitz! ⚡";
+    const text = encodeURIComponent(battleText);
     const url = encodeURIComponent(shareUrl);
-    // For Twitter, we can also include the image directly
     window.open(
       `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
       "_blank"
@@ -102,13 +104,19 @@ export function ShareDrawer({
   };
 
   const shareOnTelegram = () => {
+    const battleText = contest ? 
+      `🔥 Epic battle: "${contest.name}" with ${contest.participants.length} warriors! Join the action on Blitz ⚡` :
+      "Check out this epic battle on Blitz! ⚡";
+    const text = encodeURIComponent(battleText);
     const url = encodeURIComponent(shareUrl);
-    // Use only URL parameter - Telegram will show preview without including URL in message text
-    window.open(`https://t.me/share/url?url=${url}`, "_blank");
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, "_blank");
   };
 
   const shareOnFarcaster = () => {
-    const text = encodeURIComponent("Check out this epic battle on Blitz! ⚡");
+    const battleText = contest ? 
+      `🔥 Epic battle "${contest.name}" live on Blitz! ${contest.participants.length} warriors competing. Join the action! ⚡` :
+      "Check out this epic battle on Blitz! ⚡";
+    const text = encodeURIComponent(battleText);
     const url = encodeURIComponent(shareUrl);
     window.open(
       `https://warpcast.com/~/compose?text=${text}&embeds[]=${url}`,
@@ -126,11 +134,25 @@ export function ShareDrawer({
             Share Battle Card ⚡
           </DialogTitle>
           <DialogDescription className="text-sm text-left text-gray-300">
-            Flip Battle Live!
+            Epic battles happening now! Join the action and compete for glory.
           </DialogDescription>
         </DialogHeader>
 
         <div className="pt-6">
+          {/* Contest Info */}
+          {contest && (
+            <div className="mb-6 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+              <h3 className="text-white font-semibold mb-2">{contest.name}</h3>
+              <div className="text-sm text-gray-300 space-y-1">
+                <p>🔥 {contest.participants.length} warriors ready to battle</p>
+                <p>⚡ Status: <span className="text-green-400 capitalize">{contest.status}</span></p>
+                {contest.battleStartTime && (
+                  <p>🕐 Battle starts: {new Date(contest.battleStartTime).toLocaleString()}</p>
+                )}
+              </div>
+            </div>
+          )}
+          
           {/* Battle Card Preview */}
           <div className="mx-auto max-w-xs mb-8">
             {isGenerating ? (
