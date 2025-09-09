@@ -1,15 +1,16 @@
 "use client";
 
 import { useContest } from "@/hooks/useContest";
+import Image from "next/image";
 
 export function WinnerAnnouncement() {
   const { contest, loading: contestLoading } = useContest();
 
   const loading = contestLoading || !contest;
-  
+
   // For now, assume first participant is winner (in real app, this would come from battle results)
   const winner = contest?.participants?.[0];
-  
+
   if (loading) {
     return (
       <div className="relative w-full h-[215px] animate-pulse overflow-hidden rounded-2xl">
@@ -36,9 +37,17 @@ export function WinnerAnnouncement() {
     );
   }
 
-  const avatar = winner.zoraProfileData?.avatar?.medium || winner.zoraProfileData?.avatar?.small || "/api/placeholder/80/80";
-  const name = winner.zoraProfileData?.displayName || winner.zoraProfileData?.handle || "Unknown Creator";
-  const handle = winner.zoraProfileData?.handle ? `@${winner.zoraProfileData.handle}` : "@unknown";
+  const avatar =
+    winner.zoraProfileData?.avatar?.medium ||
+    winner.zoraProfileData?.avatar?.small ||
+    "/api/placeholder/80/80";
+  const name =
+    winner.zoraProfileData?.displayName ||
+    winner.zoraProfileData?.handle ||
+    "Unknown Creator";
+  const handle = winner.zoraProfileData?.handle
+    ? `@${winner.zoraProfileData.handle}`
+    : "@unknown";
 
   return (
     <div
@@ -91,9 +100,11 @@ export function WinnerAnnouncement() {
                 />
                 <div className="relative z-10 rounded-full overflow-hidden w-full h-full bg-white p-[2px]">
                   <div className="rounded-full overflow-hidden w-full h-full bg-black">
-                    <img
+                    <Image
                       src={avatar}
                       alt={name}
+                      width={64}
+                      height={64}
                       className="w-full h-full object-cover"
                     />
                   </div>

@@ -146,13 +146,15 @@ function EndedCreatorCard({
               />
               <div className="relative z-10 rounded-full overflow-hidden w-full h-full bg-white p-[2px]">
                 <div className="rounded-full overflow-hidden w-full h-full bg-black">
-                  <img
+                  <Image
                     src={
                       creatorProfile?.avatar?.medium ||
                       creatorProfile?.avatar?.small ||
                       "https://api.dicebear.com/7.x/avataaars/svg?seed=default"
                     }
-                    alt={creatorProfile?.displayName}
+                    width={64}
+                    height={64}
+                    alt={creatorProfile?.displayName || "Creator"}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -184,9 +186,9 @@ function EndedCreatorCard({
                   </span>
                   <div className="flex items-center space-x-0.5">
                     {marketCap.includes("-") ? (
-                      <img src={arrowDown.src} alt="arrow-down" />
+                      <Image src={arrowDown} alt="arrow-down" width={16} height={16} />
                     ) : (
-                      <img src={arrowUp.src} alt="arrow-up" />
+                      <Image src={arrowUp} alt="arrow-up" width={16} height={16} />
                     )}
                     <span
                       className="font-nunito text-sm font-bold"
