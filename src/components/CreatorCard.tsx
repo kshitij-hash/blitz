@@ -206,61 +206,61 @@ export function CreatorCard({ creator }: CreatorCardProps) {
   );
 
   // TODO: content and UI changes required for this @kshitij-hash
-  const renderPage2 = () => (
-    <>
-      <div className="flex items-center space-x-2 mb-3">
-        <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden flex-shrink-0">
-          <Image
-            src={
-              creator.avatar?.medium ||
-              creator.avatar?.small ||
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=default"
-            }
-            alt={creator.displayName || "Creator"}
-            width={20}
-            height={20}
-            className="object-cover"
-          />
-        </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-black text-sm truncate">
-            {creator.displayName || "Creator"}
-          </h3>
-          <p className="text-gray-500 text-xs">Battle Stats</p>
-        </div>
-      </div>
+  // const renderPage2 = () => (
+  //   <>
+  //     <div className="flex items-center space-x-2 mb-3">
+  //       <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden flex-shrink-0">
+  //         <Image
+  //           src={
+  //             creator.avatar?.medium ||
+  //             creator.avatar?.small ||
+  //             "https://api.dicebear.com/7.x/avataaars/svg?seed=default"
+  //           }
+  //           alt={creator.displayName || "Creator"}
+  //           width={20}
+  //           height={20}
+  //           className="object-cover"
+  //         />
+  //       </div>
+  //       <div className="flex-1">
+  //         <h3 className="font-bold text-black text-sm truncate">
+  //           {creator.displayName || "Creator"}
+  //         </h3>
+  //         <p className="text-gray-500 text-xs">Battle Stats</p>
+  //       </div>
+  //     </div>
 
-      <div className="grid grid-cols-2 gap-2 mb-2">
-        <div className="bg-gray-50 rounded-lg p-2">
-          <span className="text-xs text-gray-500 font-medium block mb-1">
-            Total Trades
-          </span>
-          <span className="text-sm font-bold text-blue-500">1,247</span>
-        </div>
+  //     <div className="grid grid-cols-2 gap-2 mb-2">
+  //       <div className="bg-gray-50 rounded-lg p-2">
+  //         <span className="text-xs text-gray-500 font-medium block mb-1">
+  //           Total Trades
+  //         </span>
+  //         <span className="text-sm font-bold text-blue-500">1,247</span>
+  //       </div>
 
-        <div className="bg-gray-50 rounded-lg p-2">
-          <span className="text-xs text-gray-500 font-medium block mb-1">
-            24h Volume
-          </span>
-          <span className="text-sm font-bold text-purple-500">$12.4K</span>
-        </div>
+  //       <div className="bg-gray-50 rounded-lg p-2">
+  //         <span className="text-xs text-gray-500 font-medium block mb-1">
+  //           24h Volume
+  //         </span>
+  //         <span className="text-sm font-bold text-purple-500">$12.4K</span>
+  //       </div>
 
-        <div className="bg-gray-50 rounded-lg p-2">
-          <span className="text-xs text-gray-500 font-medium block mb-1">
-            Supporters
-          </span>
-          <span className="text-sm font-bold text-orange-500">89</span>
-        </div>
+  //       <div className="bg-gray-50 rounded-lg p-2">
+  //         <span className="text-xs text-gray-500 font-medium block mb-1">
+  //           Supporters
+  //         </span>
+  //         <span className="text-sm font-bold text-orange-500">89</span>
+  //       </div>
 
-        <div className="bg-gray-50 rounded-lg p-2">
-          <span className="text-xs text-gray-500 font-medium block mb-1">
-            Win Rate
-          </span>
-          <span className="text-sm font-bold text-green-500">73%</span>
-        </div>
-      </div>
-    </>
-  );
+  //       <div className="bg-gray-50 rounded-lg p-2">
+  //         <span className="text-xs text-gray-500 font-medium block mb-1">
+  //           Win Rate
+  //         </span>
+  //         <span className="text-sm font-bold text-green-500">73%</span>
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 
   return (
     <div
@@ -285,10 +285,11 @@ export function CreatorCard({ creator }: CreatorCardProps) {
         style={{ backgroundColor: "#F2F3F3" }}
       >
         <div className="min-h-[120px]">
-          {currentPage === 0 ? renderPage1() : renderPage2()}
+          {/* {currentPage === 0 ? renderPage1() : renderPage2()} */}
+          {renderPage1()}
         </div>
 
-        <div className="flex justify-center space-x-1.5 items-center">
+        {/* <div className="flex justify-center space-x-1.5 items-center">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -301,8 +302,8 @@ export function CreatorCard({ creator }: CreatorCardProps) {
               backgroundColor:
                 currentPage === 0 ? "#838383" : "rgba(0,0,0,0.2)",
             }}
-          />
-          <button
+          /> */}
+          {/* <button
             onClick={(e) => {
               e.stopPropagation();
               setCurrentPage(1);
@@ -314,8 +315,8 @@ export function CreatorCard({ creator }: CreatorCardProps) {
               backgroundColor:
                 currentPage === 1 ? "#838383" : "rgba(0,0,0,0.2)",
             }}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
       </div>
     </div>
   );
