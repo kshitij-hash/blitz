@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 interface Props {
-  params: { contestId: string };
+  params: Promise<{ contestId: string }>;
 }
 
 // Generate metadata for social sharing
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { contestId } = params;
+  const { contestId } = await params;
 
   // You can fetch contest data here if needed for dynamic titles
   const baseUrl =
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ContestSharePage({ params }: Props) {
-  const { contestId } = params;
+export default async function ContestSharePage({ params }: Props) {
+  const { contestId } = await params;
   const baseUrl =
     process.env.NEXT_PUBLIC_APP_URL || "https://blitzdotfun-three.vercel.app";
   const imageUrl = `${baseUrl}/api/battle-card?contestId=${contestId}`;
